@@ -7,7 +7,10 @@
     "dev:dbc": "pnpm --filter denton-bights-collective dev",
     "dev:cctx": "pnpm --filter craigs-creations dev",
     "build": "pnpm -r build",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -17,5 +20,11 @@
     "ignoredBuiltDependencies": [
       "unrs-resolver"
     ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

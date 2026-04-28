@@ -1,10 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Custom colors for Craig's Creations */
-  --color-linen: #F4EFE6;
-  --color-terracotta: #B85C3C;
-  --color-terracotta-dark: #9A4A2F;
+  --color-linen: #f4efe6;
+  --color-terracotta: #b85c3c;
+  --color-terracotta-dark: #9a4a2f;
 
   /* Font families — these reference the CSS variables set by next/font in layout.tsx */
   --font-sans: var(--font-inter), system-ui, sans-serif;

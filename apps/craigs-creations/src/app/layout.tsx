@@ -1,22 +1,23 @@
-import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Fraunces, Inter } from 'next/font/google';
+import './globals.css';
 
 const frauncesFont = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
+  variable: '--font-fraunces',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 const interFont = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: "Craig's Creations Photography",
-  description: "Portraits, Live Events, Candid, Landscapes, Studio, and Boudoir Photography in North Texas.",
+  description:
+    'Portraits, Live Events, Candid, Landscapes, Studio, and Boudoir Photography in North Texas.',
 };
 
 export default function RootLayout({
