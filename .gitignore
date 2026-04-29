@@ -29,4 +29,4 @@ Thumbs.db
 *.swp
 
 # Local Photos
-apps/craigs-creations/public/images/202*
+*.jpg

@@ -16,3 +16,6 @@ package-lock.json
 # Generated files
 *.min.js
 *.min.css
+
+# Ignore all JPG files:
+**/*.jpg

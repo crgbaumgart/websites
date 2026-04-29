@@ -3,6 +3,7 @@
 @theme {
   /* Custom colors for Craig's Creations */
   --color-linen: #f4efe6;
+  --color-slate-grey: #3b3b3b;
   --color-terracotta: #b85c3c;
   --color-terracotta-dark: #9a4a2f;
 
@@ -12,6 +13,6 @@
 }
 
 body {
-  background-color: var(--color-linen);
+  background-color: var(--color-slate-grey);
   color: var(--color-stone-900);
 }
