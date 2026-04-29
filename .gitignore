@@ -27,3 +27,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Local Photos
+apps/craigs-creations/public/images/202*
