@@ -32,7 +32,10 @@ export default function PortfolioPage() {
   return (
     <main className="min-h-screen px-12 py-24 md:px-24 md:py-12">
       <header className="mb-12">
-        <Link href="/" className="font-display text-xl md:text-4xl text-terracotta drop-shadow-md">
+        <Link
+          href="/"
+          className="font-display text-xl md:text-4xl text-terracotta drop-shadow-md hover:text-terracotta-light"
+        >
           Craig&apos;s Creations
         </Link>
         <h1 className="font-display text-4xl md:text-7xl text-white">Portfolio</h1>

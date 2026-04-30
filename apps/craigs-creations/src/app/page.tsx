@@ -7,7 +7,10 @@ export default function HomePage() {
       {/* Navigation Header */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-6 md:px-12 md:py-8 ">
         <nav className="flex items-center justify-between max-w-7xl  mx-auto">
-          <Link href="/" className="font-display text-xl md:text-4xl text-white drop-shadow-md">
+          <Link
+            href="/"
+            className="font-display text-xl md:text-4xl text-white drop-shadow-md hover:text-terracotta-light"
+          >
             Craig&apos;s Creations
           </Link>
 
