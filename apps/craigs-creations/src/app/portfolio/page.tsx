@@ -2,12 +2,15 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import { photos, categories, type PhotoCategory } from '@/data/photos';
 
 type FilterValue = 'all' | PhotoCategory;
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState<FilterValue>('all');
+  const [lightboxIndex, setLightboxIndex] = useState(-1); // -1 = closed
 
   const filteredPhotos = photos.filter((photo) => {
     if (activeFilter === 'all') {
@@ -15,6 +18,14 @@ export default function PortfolioPage() {
     }
     return photo.category === activeFilter;
   });
+
+  // Convert data.photos into object form lightbox-lib is expecting
+  const lightboxSlides = filteredPhotos.map((photo) => ({
+    src: photo.path,
+    alt: photo.alt,
+    width: photo.aspectRatio[0],
+    height: photo.aspectRatio[1],
+  }));
 
   // Filter by Category Buttons
   return (
@@ -43,17 +54,16 @@ export default function PortfolioPage() {
         ))}
       </nav>
 
-      {/* Porfolio Photo Grid */}
+      {/* Portfolio Photo Grid */}
       {filteredPhotos.length === 0 ? (
         <p className="text-stone-500 italic">No photos in {activeFilter} category yet.</p>
       ) : (
         <div className="columns-1 sm:columns-2 lg:columns-3 space-y-3.5">
-          {/* <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-3.5">     */}
-          {filteredPhotos.map((photo) => (
-            <div
+          {filteredPhotos.map((photo, index) => (
+            <button
               key={photo.path}
-              // className="mb-4 break-inside-avoid"
-              className="relative break-inside-avoid overflow-hidden rounded-md bg-stone-200"
+              onClick={() => setLightboxIndex(index)}
+              className="relative block w-full break-inside-avoid overflow-hidden rounded-md bg-black cursor-zoom-in"
               style={{ aspectRatio: `${photo.aspectRatio[0]}/${photo.aspectRatio[1]}` }}
             >
               <Image
@@ -61,13 +71,19 @@ export default function PortfolioPage() {
                 alt={photo.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 hover:scale-105"
+                className="object-cover transition-transform duration-500 hover:scale-110"
                 loading="lazy"
               />
-            </div>
+            </button>
           ))}
         </div>
       )}
+      <Lightbox
+        open={lightboxIndex >= 0}
+        index={lightboxIndex}
+        close={() => setLightboxIndex(-1)}
+        slides={lightboxSlides}
+      />
     </main>
   );
 }
