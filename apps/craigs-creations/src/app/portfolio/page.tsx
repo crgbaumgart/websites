@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -29,12 +30,15 @@ export default function PortfolioPage() {
 
   // Filter by Category Buttons
   return (
-    <main className="min-h-screen px-12 py-24 md:px-12 md:py-32 max-w-7xl mx-auto">
+    <main className="min-h-screen px-12 py-24 md:px-24 md:py-12">
       <header className="mb-12">
-        <h1 className="font-display text-4xl md:text-6xl text-white">Portfolio</h1>
-        <p className="mt-4 text-xl text-terracotta max-w-2xl">
-          A selection of recent work across portraits, events, landscapes, studio, and intimate
-          photography.
+        <Link href="/" className="font-display text-xl md:text-4xl text-terracotta drop-shadow-md">
+          Craig&apos;s Creations
+        </Link>
+        <h1 className="font-display text-4xl md:text-7xl text-white">Portfolio</h1>
+        <p className="mt-4 text-xl text-terracotta-light max-w-8xl">
+          A selection of recent work across... Portraits, Events, Landscapes, Studio, and Intimate
+          Photography;
         </p>
       </header>
 
@@ -100,8 +104,10 @@ function FilterButton({
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-        isActive ? 'bg-terracotta text-white' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+      className={`flex-1 px-5 py-3 rounded-md text-lg font-medium transition-colors ${
+        isActive
+          ? 'bg-terracotta text-white'
+          : 'bg-stone-100 text-stone-700 hover:bg-terracotta-light'
       }`}
     >
       {label}
