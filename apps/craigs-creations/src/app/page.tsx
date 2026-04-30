@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { HomePageNavHeader } from '@/components/Headers';
+import { FeaturedWork } from '@/components/FeaturedWork';
 
 export default function HomePage() {
   return (
@@ -9,7 +10,11 @@ export default function HomePage() {
       {/* Navigation Header */}
       <HomePageNavHeader />
 
+      {/* Hero Image Overlay */}
       <HeroPhoto />
+
+      {/* Image Grid that Features Specific Photos */}
+      <FeaturedWork />
     </>
   );
 }

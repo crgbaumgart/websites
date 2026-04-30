@@ -8,6 +8,23 @@ export type Photo = {
   meta: null | object;
 };
 
+// Currated list of desired photos featured on HomePage
+export const featuredPhotoSlugs: string[] = [
+  '/images/landscapes/2025_01_09-Court_House_Snow-Denton_TX.jpg',
+  '/images/portraits/2024_08_15-Ashlyn-Pre_School.jpg',
+  '/images/landscapes/2025_01_10-Andys_Snow-Denton_TX.jpg',
+  '/images/studio/2026_04_15-Bee_in_Frame-Ft_Worth_TX.jpg',
+  '/images/landscapes/2025_01_10-Zoom_Zooms_Snow_BW-Denton_TX.jpg',
+  '/images/portraits/2024_08_15-Walker_and_Lexi-Pre_School.jpg',
+];
+
+// // Prepare  `featuredPhotos` to use resolved Photo object in order
+// // specified by featuredPhotoSlugs
+// export const featuredPhotos: Photo[] = featuredPhotoSlugs.map(
+//   (slug) => photos.find((p) => p.path === slug)).filter(
+//   (photo): photo is Photo => photo !== undefined
+// );
+
 export const photos: Photo[] = [
   // Portraits
   {
@@ -152,3 +169,9 @@ export const categories: Array<{ slug: PhotoCategory; label: string }> = [
   { slug: 'studio', label: 'Studio' },
   { slug: 'boudoir', label: 'Boudoir' },
 ];
+
+// Prepare  `featuredPhotos` to use resolved Photo object in order
+// specified by featuredPhotoSlugs
+export const featuredPhotos: Photo[] = featuredPhotoSlugs
+  .map((slug) => photos.find((p) => p.path === slug))
+  .filter((photo): photo is Photo => photo !== undefined);
