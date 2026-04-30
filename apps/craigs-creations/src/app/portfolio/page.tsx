@@ -1,10 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+
+import { PortfolioPageHeader } from '@/components/Headers';
 import { photos, categories, type PhotoCategory } from '@/data/photos';
 
 type FilterValue = 'all' | PhotoCategory;
@@ -31,19 +33,7 @@ export default function PortfolioPage() {
   // Filter by Category Buttons
   return (
     <main className="min-h-screen px-12 py-24 md:px-24 md:py-12">
-      <header className="mb-12">
-        <Link
-          href="/"
-          className="font-display text-xl md:text-4xl text-terracotta drop-shadow-md hover:text-terracotta-light"
-        >
-          Craig&apos;s Creations
-        </Link>
-        <h1 className="font-display text-4xl md:text-7xl text-white">Portfolio</h1>
-        <p className="mt-4 text-xl text-terracotta-light max-w-8xl">
-          A selection of recent work across... Portraits, Events, Landscapes, Studio, and Intimate
-          Photography;
-        </p>
-      </header>
+      <PortfolioPageHeader />
 
       <nav className="flex flex-wrap gap-2 mb-12" aria-label="Filter photos by category">
         <FilterButton
