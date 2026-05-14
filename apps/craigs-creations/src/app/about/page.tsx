@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-import { AboutPageHeader } from '@/components/Headers';
+import { SiteHeader } from '@/components/Headers';
 
 export default function AboutPage() {
   return (
     <main>
-      <AboutPageHeader />
-      <h1>Contact</h1>
+      <SiteHeader variant="solid" />
+      <h1>About</h1>
       <p>Coming soon.</p>
     </main>
   );

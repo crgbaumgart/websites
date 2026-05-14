@@ -6,8 +6,9 @@ import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
-import { PortfolioPageHeader } from '@/components/Headers';
+import { SiteHeader } from '@/components/Headers';
 import { photos, categories, type PhotoCategory } from '@/data/photos';
+import { SiteWidthContainer } from '@/components/Containers';
 
 type FilterValue = 'all' | PhotoCategory;
 
@@ -30,80 +31,90 @@ export default function PortfolioPage() {
     height: photo.aspectRatio[1],
   }));
 
-  // Filter by Category Buttons
   return (
-    <main className="min-h-screen px-12 py-24 md:px-24 md:py-12">
-      <PortfolioPageHeader />
+    <>
+      <SiteHeader variant="solid" />
+      <main className="min-h-screen px-6 py-12 md:px-12 md:py-16">
+        <SiteWidthContainer>
+          <header className="mb-12">
+            <h1 className="font-display text-4xl md:text-7xl text-stone-900">Portfolio</h1>
+            <p className="mt-4 text-xl text-terracotta max-w-2xl">
+              A selection of recent work across portraits, events, landscapes, studio, and intimate
+              photography.
+            </p>
+          </header>
 
-      <nav className="flex flex-wrap gap-2 mb-12" aria-label="Filter photos by category">
-        <FilterButton
-          isActive={activeFilter === 'all'}
-          onClick={() => setActiveFilter('all')}
-          label="All"
-        />
-        {categories.map((cat) => (
-          <FilterButton
-            key={cat.slug}
-            isActive={activeFilter === cat.slug}
-            onClick={() => setActiveFilter(cat.slug)}
-            label={cat.label}
-          />
-        ))}
-      </nav>
-
-      {/* Portfolio Photo Grid */}
-      {filteredPhotos.length === 0 ? (
-        <p className="text-stone-500 italic">No photos in {activeFilter} category yet.</p>
-      ) : (
-        <div className="columns-1 sm:columns-2 lg:columns-3 space-y-3.5">
-          {filteredPhotos.map((photo, index) => (
-            <button
-              key={photo.path}
-              onClick={() => setLightboxIndex(index)}
-              className="relative block w-full break-inside-avoid overflow-hidden rounded-md bg-black cursor-zoom-in"
-              style={{ aspectRatio: `${photo.aspectRatio[0]}/${photo.aspectRatio[1]}` }}
-            >
-              <Image
-                src={photo.path}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 hover:scale-110"
-                loading="lazy"
+          <nav className="flex flex-wrap gap-2 mb-12" aria-label="Filter photos by category">
+            <FilterButton
+              isActive={activeFilter === 'all'}
+              onClick={() => setActiveFilter('all')}
+              label="All"
+            />
+            {categories.map((cat) => (
+              <FilterButton
+                key={cat.slug}
+                isActive={activeFilter === cat.slug}
+                onClick={() => setActiveFilter(cat.slug)}
+                label={cat.label}
               />
-            </button>
-          ))}
-        </div>
-      )}
+            ))}
+          </nav>
+
+          {/* Portfolio Photo Grid */}
+          {filteredPhotos.length === 0 ? (
+            <p className="text-stone-500 italic">No photos in {activeFilter} category yet.</p>
+          ) : (
+            <div className="columns-1 sm:columns-2 lg:columns-3 space-y-3.5">
+              {filteredPhotos.map((photo, index) => (
+                <button
+                  key={photo.path}
+                  onClick={() => setLightboxIndex(index)}
+                  className="relative block w-full break-inside-avoid overflow-hidden rounded-md bg-black cursor-zoom-in"
+                  style={{ aspectRatio: `${photo.aspectRatio[0]}/${photo.aspectRatio[1]}` }}
+                >
+                  <Image
+                    src={photo.path}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 hover:scale-110"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </SiteWidthContainer>
+      </main>
       <Lightbox
         open={lightboxIndex >= 0}
         index={lightboxIndex}
         close={() => setLightboxIndex(-1)}
         slides={lightboxSlides}
       />
-    </main>
+    </>
   );
-}
 
-function FilterButton({
-  isActive,
-  onClick,
-  label,
-}: {
-  isActive: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex-1 px-5 py-3 rounded-md text-lg font-medium transition-colors ${
-        isActive
-          ? 'bg-terracotta text-white'
-          : 'bg-stone-100 text-stone-700 hover:bg-terracotta-light'
-      }`}
-    >
-      {label}
-    </button>
-  );
+  function FilterButton({
+    isActive,
+    onClick,
+    label,
+  }: {
+    isActive: boolean;
+    onClick: () => void;
+    label: string;
+  }) {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex-1 px-5 py-3 rounded-md text-lg font-medium transition-colors ${
+          isActive
+            ? 'bg-terracotta text-white'
+            : 'bg-stone-100 text-stone-700 hover:bg-terracotta-light'
+        }`}
+      >
+        {label}
+      </button>
+    );
+  }
 }

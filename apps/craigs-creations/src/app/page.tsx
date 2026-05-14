@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { HomePageNavHeader } from '@/components/Headers';
+import { SiteHeader } from '@/components/Headers';
 import { SiteWidthContainer } from '@/components/Containers';
 import { FeaturedWork } from '@/components/FeaturedWork';
 
@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       {/* Navigation Header */}
-      <HomePageNavHeader />
+      <SiteHeader variant="overlay" />
 
       {/* Hero Image Overlay */}
       <HeroPhoto />
