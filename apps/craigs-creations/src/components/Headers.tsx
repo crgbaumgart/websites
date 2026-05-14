@@ -1,18 +1,22 @@
 import Link from 'next/link';
 
+import { SiteWidthContainer } from '@/components/Containers';
+
 export function HomePageNavHeader() {
   return (
     <header className="absolute top-0 left-0 right-0 z-20 px-6 py-6 md:px-12 md:py-8">
-      <nav className="flex items-center justify-between max-w-7xl  mx-auto">
-        <Link
-          href="/"
-          className="font-display text-xl md:text-4xl text-white drop-shadow-md hover:text-terracotta-light"
-        >
-          Craig&apos;s Creations
-        </Link>
+      <SiteWidthContainer>
+        <nav className="flex items-center justify-between max-w-7xl  mx-auto">
+          <Link
+            href="/"
+            className="font-display text-xl md:text-4xl text-white drop-shadow-md hover:text-terracotta-light"
+          >
+            Craig&apos;s Creations
+          </Link>
 
-        <HeaderBasicNavigation />
-      </nav>
+          <HeaderBasicNavigation />
+        </nav>
+      </SiteWidthContainer>
     </header>
   );
 }
@@ -61,7 +65,7 @@ function HeaderBasicNavigation() {
   return (
     <ul className="hidden md:flex items-center gap-8 text-lg text-white drop-shadow-md">
       <li>
-        <Link href="/portfolio" className="hover:text-terracotta transition-colors:">
+        <Link href="/portfolio" className="hover:text-terracotta transition-colors">
           Portfolio
         </Link>
       </li>

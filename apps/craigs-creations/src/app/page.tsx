@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { HomePageNavHeader } from '@/components/Headers';
+import { SiteWidthContainer } from '@/components/Containers';
 import { FeaturedWork } from '@/components/FeaturedWork';
 
 export default function HomePage() {
@@ -26,7 +27,7 @@ function HeroPhoto() {
 
       <div className="absolute inset-0 bg-linear-to-t from-stone-900/70 via-stone-900/20 to-stone-900/40" />
 
-      <div className="relative z-10 px-6 md:px-12 pb-16 md:pb-24 max-w-7xl mx-auto w-full">
+      <SiteWidthContainer className="relative z-10 pb-16 md:pb-24 w-full">
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-tight max-w-3xl">
           Honest portraits.
           <br />
@@ -37,7 +38,7 @@ function HeroPhoto() {
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
-            href="/book"
+            href="/booking"
             className="bg-terracotta hover:bg-terracotta-dark text-white px-8 py-4 rounded-md text-base font-medium transition-colors"
           >
             Book a Session
@@ -49,7 +50,7 @@ function HeroPhoto() {
             View Portfolio
           </Link>
         </div>
-      </div>
+      </SiteWidthContainer>
     </section>
   );
 }
