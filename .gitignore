@@ -9,6 +9,9 @@ build/
 .astro/
 out/
 
+# Vagrant
+infra/.vagrant/*
+
 # Environment files
 .env
 .env.local

@@ -12,15 +12,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ],
-    "ignoredBuiltDependencies": [
-      "unrs-resolver"
-    ]
-  },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",

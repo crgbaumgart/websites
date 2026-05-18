@@ -1,0 +1,28 @@
+# Dependencies (will be installed in the container)
+**/node_modules
+**/.pnpm-store
+
+# Build outputs
+**/.next
+**/dist
+**/build
+**/out
+
+# Git
+.git
+.gitignore
+
+# Editor / OS
+.vscode
+
+# Logs
+*.log
+
+# Environment files (secrets)
+.env
+.env.local
+.env*.local
+
+# Other infra (not needed for the app build)
+infra
+apps/denton-bights-collective

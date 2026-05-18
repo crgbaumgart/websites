@@ -1,0 +1,7 @@
+---
+- name: Provision Dangerzone websites VM
+  hosts: websites
+  become: true
+
+  roles:
+    - docker
