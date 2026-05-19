@@ -1,0 +1,38 @@
+# infra/compose/docker-compose.yml
+
+# 'name' sets the project name. Compose uses this to prefix container
+# names, network names, etc. Without it, the project name defaults to
+# the directory name (which would be 'compose'), which is less clear.
+name: websites
+
+services:
+  craigs-creations:
+    # Build the image from a Dockerfile.
+    # 'context' is the directory Docker uses as the build context —
+    # equivalent to the '.' in `docker build .`
+    # 'dockerfile' is the path to the Dockerfile, relative to context.
+    build:
+      context: ../..
+      dockerfile: apps/craigs-creations/Dockerfile
+    # Tag the resulting image (so we can reference it by name elsewhere).
+    image: craigs-creations:latest
+
+    # Name the container itself (so `docker ps` shows a friendly name).
+    container_name: craigs-creations
+
+    # Port mapping: "<host>:<container>"
+    # Host port 3000 (on the VM) → container port 3000 (Next.js server).
+    ports:
+      - '3000:3000'
+
+    # Restart policy:
+    # 'unless-stopped' = restart automatically on crash or daemon restart,
+    # but stay stopped if I explicitly stopped it. Sane default.
+    restart: unless-stopped
+
+    # Environment variables for the running container.
+    # NODE_ENV=production tells Next.js to run in prod mode (faster,
+    # no dev features). Already set in the Dockerfile but doesn't hurt
+    # to be explicit.
+    environment:
+      - NODE_ENV=production
